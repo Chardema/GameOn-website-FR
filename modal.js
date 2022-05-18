@@ -54,7 +54,8 @@ const validFirst = function (inputFirst) {
     small.classList.remove("text-danger");
     small.classList.add("text-success");
   } else {
-    small.innerHTML = "c pas bon cthistoire 🥸";
+    small.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
     small.classList.remove("text-success");
     small.classList.add("text-danger");
   }
@@ -85,7 +86,8 @@ const validLast = function (inputLast) {
     small.classList.remove("text-danger");
     small.classList.add("text-success");
   } else {
-    small.innerHTML = "c pas bon cthistoire 🥸";
+    small.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom";
     small.classList.remove("text-success");
     small.classList.add("text-danger");
   }
@@ -99,7 +101,7 @@ form.email.addEventListener("change", function () {
 const validEmail = function (inputEmail) {
   let emailRegExp = new RegExp(
     "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
-    "g"
+    "g" // voir pk il accepete 2 @@
   );
   //on test la RegExp
   let testEmail = emailRegExp.test(inputEmail.value);
@@ -138,18 +140,45 @@ const validQuantity = function (inputQuantity) {
 };
 
 // ***********************Vérifie Saisie **********************************
+const formFields = {
+  firstName: {
+    element: document.getElementById("first"),
+    validationType: "name",
+    invalidMessage:
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
+  },
+  lastName: {
+    element: document.getElementById("last"),
+    validationType: "name",
+    invalidMessage:
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
+  },
+  email: {
+    element: document.getElementById("email"),
+    validationType: "email",
+    invalidMessage: "Veuillez entrer une adresse mail valide.",
+  },
+  birthdate: {
+    element: document.getElementById("birthdate"),
+    validationType: "date",
+    invalidMessage: "Vous devez entrer votre date de naissance.",
+  },
+  quantity: {
+    element: document.getElementById("quantity"),
+    validationType: "number",
+    invalidMessage: "Veuillez entrer un nombre.",
+  },
+  location: {
+    element: document.querySelectorAll('input[name="location"]'),
+    validationType: "radio",
+    invalidMessage: "Veuillez selectionner une ville.",
+  },
+  checkbox: {
+    element: document.getElementById("checkbox1"),
+    validationType: "checkbox",
+    invalidMessage:
+      "Vous devez vérifier que vous acceptez les termes et conditions.",
+  },
+};
 
-function required() {
-  var empt = document.forms["reserve"]["first"].value;
-  var empt2 = document.forms["reserve"]["last"].value;
-  if (empt && empt2 == "") {
-    alert("Merci de remplir correctement le champ nom/prénom");
-    return false;
-  } else if (document.getElementById("checked").checked === false) {
-    alert("Vous n'avez pas accepté les conditions");
-    return false;
-  } else {
-    alert("Tout est bon");
-    return true;
-  }
-}
+const fieldContainer = document.querySelectorAll(".formData");

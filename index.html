@@ -61,7 +61,7 @@
               id="contactform"
               action="index.html"
               method="get"
-              onsubmit="required()"
+              onsubmit="return false"
             >
               <div
                 class="formData">
@@ -199,10 +199,11 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" id="checked"required>
+                <label class="checkbox2-label" for="checkbox1" id="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation. *
                 </label>
+                <small></small>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
@@ -216,6 +217,7 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
+                name="envoyer"
               />
             </form>
           </div>
