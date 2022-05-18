@@ -1,0 +1,23 @@
+{
+  "name": "projetjs",
+  "version": "1.0.0",
+  "description": "Code du projet 4 de développeur front-end V2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chardema/GameOn-website-FR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chardema/GameOn-website-FR/issues"
+  },
+  "homepage": "https://github.com/Chardema/GameOn-website-FR#readme",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  }
+}

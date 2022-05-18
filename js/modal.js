@@ -182,3 +182,5 @@ const formFields = {
 };
 
 const fieldContainer = document.querySelectorAll(".formData");
+
+export { formFields, fieldContainer };
