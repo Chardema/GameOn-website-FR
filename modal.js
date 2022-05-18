@@ -141,8 +141,12 @@ const validQuantity = function (inputQuantity) {
 
 function required() {
   var empt = document.forms["reserve"]["first"].value;
-  if (empt == "") {
-    alert("Merci de donner votre prénom");
+  var empt2 = document.forms["reserve"]["last"].value;
+  if (empt && empt2 == "") {
+    alert("Merci de remplir correctement le champ nom/prénom");
+    return false;
+  } else if (document.getElementById("checked").checked === false) {
+    alert("Vous n'avez pas accepté les conditions");
     return false;
   } else {
     alert("Tout est bon");
