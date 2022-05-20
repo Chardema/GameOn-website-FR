@@ -14,6 +14,7 @@ const formName = document.getElementsByName("reserve")[0];
 
 formName.onsubmit = (event) => {
   event.preventDefault();
+  console.log("Salut");
 
   if (validator.launchValidation()) {
     formName.reset();
