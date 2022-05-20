@@ -11,11 +11,25 @@ export default class Validator {
   setFormValid = (state) => (this.#formValid = state);
 
   // Methods for validation types
-  nameValidation = (name) =>
-    name.value !== null && name.value.length >= 2 ? true : false;
+  firstNameValidation = (first) => {
+    //name.value !== null && name.value.length >= 2 ? true : false;
+    console.log("Bonjour");
 
-  emailValidation = (email) =>
-    /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/.test(email.value);
+    return /^([A-ZÀ-Ÿa-z-']{2,20})$/.test(first.value);
+  };
+
+  lastNameValidation = (last) => {
+    //name.value !== null && name.value.length >= 2 ? true : false;
+    console.log("Bonjour");
+
+    return /^([A-ZÀ-Ÿa-z-']{2,20})$/.test(last.value);
+  };
+  // ajouter regexp pour nom uniquement en lettre
+
+  emailValidation = (email) => {
+    console.log("Hello");
+    return /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/.test(email.value);
+  };
 
   numberValidation = (number) => /^[0-9]+$/.test(number.value);
 
@@ -26,6 +40,7 @@ export default class Validator {
   checkboxValidation = (checkbox) => checkbox.checked;
 
   dateValidation = (date) => (date.value != "" ? true : false);
+  // ajouter regexp pour vérifier la date de naissance
 
   // Reset errors fields style and set the default value for private property #formValid
   resetValidation = () => {
@@ -48,8 +63,17 @@ export default class Validator {
 
     for (const field in this.formFields) {
       switch (this.formFields[field].validationType) {
-        case "name":
-          if (!this.nameValidation(this.formFields[field].element)) {
+        case "first":
+          if (!this.firstNameValidation(this.formFields[field].element)) {
+            this.invalidInputStyle(
+              this.formFields[field].element,
+              this.formFields[field].invalidMessage
+            );
+            this.setFormValid(false);
+          }
+          break;
+        case "last":
+          if (!this.lastNameValidation(this.formFields[field].element)) {
             this.invalidInputStyle(
               this.formFields[field].element,
               this.formFields[field].invalidMessage
