@@ -19,7 +19,7 @@ export default class Validator {
   emailValidation = (email) =>
     /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/.test(email.value);
 
-  numberValidation = (number) => /^[0-9]+$/.test(number.value);
+  numberValidation = (number) => /^([0-9]){1,2}$/.test(number.value);
 
   radioValidation = (radio) => {
     for (let element of radio) if (element.checked) return true;
@@ -27,7 +27,10 @@ export default class Validator {
 
   checkboxValidation = (checkbox) => checkbox.checked;
 
-  dateValidation = (date) => (date.value != "" ? true : false);
+  dateValidation = (date) =>
+    /^((19[3-9]+[0-9]|200[0-9])-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|3[01])[/](0?[1-9]|1[0-2])[/](19[3-9]+[0-9]|200[0-6]))$/.test(
+      date.value
+    );
   // ajouter regexp pour vérifier la date de naissance
 
   // Reset errors fields style and set the default value for private property #formValid
